@@ -1,0 +1,52 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 260px;
+  margin: 10px 0;
+  padding: 10px;
+  background: #d3d3d3;
+  display: flex;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card__content {
+    width: 90%;
+    text-align: center;
+    font-size: 24px;
+    text-transform: capitalize;
+}
+.card__content span:hover {
+  text-decoration: underline;
+}
+.card__action {
+  width: 20%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-between;
+}
+.card__action .fas:hover  {
+  color: red;
+}
+
+/* Modal */
+.modal-body h3 {
+  position: relative;
+}
+
+.modal-body .player-btn {
+  position: absolute;
+  top: 1px;
+  right: 0;
+  font-size: 22px;
+}
+
+.modal-body h3:hover {
+  cursor: pointer;
+  background: #ccc;
+}

@@ -1,0 +1,34 @@
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 550px;
+  margin: 10px 0;
+  padding: 10px;
+  background: #d3d3d3;
+  display: flex;
+}
+.card:hover {
+  cursor: pointer;
+}
+.card__content {
+    width: 95%;
+    font-size: 20px;
+}
+.card__content:hover {
+  text-decoration: underline;
+}
+.card__action {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.card__action i:first-child {
+  margin-bottom: 5px;
+}
+.card__delete:hover, .card__play:hover {
+  color: red;
+}

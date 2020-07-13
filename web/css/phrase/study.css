@@ -1,0 +1,26 @@
+h2 span{
+    margin-right: 30px;
+}
+h2 span:first-child:hover {
+    cursor: pointer;
+}
+.hidden {
+    display: none;
+}
+.table {
+    margin-top: 30px;
+}
+.fa-globe-americas:hover {
+    color: red;
+}
+
+.statistics-wrp {
+    display: flex;
+}
+.select-subtext {
+    margin-left: 100px;
+}
+
+.prev-next-wrp span {
+    cursor: pointer;
+}
