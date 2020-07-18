@@ -44,11 +44,10 @@ class WordFileForm extends \yii\base\Model
     public function saveList($words)
     {
         for ($i = 0, $count = count($words['en']); $i < $count; $i++) {
-            $word = Word::getByName($words['en'][$i]);
-            if (!$word) {
-                Word::add($words['en'][$i], $words['ru'][$i]);
-                $this->countAdd++;
-            }
+            $word = Word::getByName('en', $words['en'][$i]);
+            if ($word) continue;
+            Word::add($words['en'][$i], $words['ru'][$i]);
+            $this->countAdd++;
         }
     }
 

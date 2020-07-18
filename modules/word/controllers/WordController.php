@@ -105,10 +105,9 @@ class WordController extends \app\controllers\BaseController
     public function actionDelete($id)
     {
         $word = Word::findOne($id);
-        $word->remove();
-        $items = WordText::findAll(['word_id' => $word->id]);
-        if ($items) array_walk($items, function($item) {$item->remove();});
-        return $this->setMessage('Слово удалено')->redirect(Url::previous());
+        if ($word->delete()) $this->setMessage('Слово удалено');
+        else $this->errorMessage('Ошибка при удалении слова');
+        return $this->redirect(Url::previous());
     }
 
     public function actionSetState($id)

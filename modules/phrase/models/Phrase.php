@@ -18,7 +18,7 @@ use app\modules\text\models\Text;
  */
 class Phrase extends \app\models\ModelApp
 {
-    use \app\traits\PhraseTrait;
+    use \app\traits\PhraseTrait, \app\traits\BreakTextTrait;
     
     public $sound_file;
     public $sound_lang;
