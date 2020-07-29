@@ -120,6 +120,15 @@ class WordController extends \app\controllers\BaseController
         return $this->redirect(Url::previous());
     }
 
+    public function actionStudied($ids)
+    {
+        $words = Word::findAll(explode(',', $ids));
+        foreach ($words as $word) {
+            $word->setState(STATE_LEARNED);
+        }
+        $this->successMessage()->back();
+    }
+
     public function actionAddVoice()
     {
         $model = new Word();
