@@ -21,6 +21,9 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Добавить озвучку en', ['/sound/add-for-words', 'lang' => 'en'], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Добавить озвучку ru', ['/sound/add-for-words', 'lang' => 'ru'], ['class' => 'btn btn-primary']) ?>
     </p>
+    <p>
+        <?= Html::a('Озвучить', ['/word/lesson/sounds'], ['class' => 'btn btn-primary']) ?>
+    </p>
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

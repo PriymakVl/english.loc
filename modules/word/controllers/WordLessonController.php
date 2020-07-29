@@ -57,10 +57,11 @@ class WordLessonController extends \app\controllers\BaseController
         return $this->render('study', compact('text', 'word', 'words'));
     }
 
-    public function actionSounds($text_id) 
+    public function actionSounds($text_id = false) 
     {
-        $text = Text::findOne($text_id);
-        $words = State::sort($text->words);
+        if ($text_id) $words = Text::findOne($text_id)->words;
+        else $words = Word::findAll(['status' => STATUS_ACTIVE]);
+        $words = State::sort($words);
         $sounds_str = Sound::makeStringForPlayer($words);
         return $this->render('sounds', compact('sounds_str', 'text'));
     }
