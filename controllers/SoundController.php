@@ -17,7 +17,7 @@ class SoundController extends \app\controllers\BaseController
         $this->giveFileToDownload($items, $lang);
     }
 
-    private function giveFileToDownload($items, $lang) 
+    private function giveFileToDownload($items, $lang, $all = false) 
     {
         if (!$items) exit('нет ничего для озвучки');
         $this->setHeader();
@@ -25,9 +25,13 @@ class SoundController extends \app\controllers\BaseController
         foreach ($items as $item) {
             if ($lang == 'en') {
                 if ($item->engl == 'con') continue; //не озвучивает программа
+                if ($item->sound->en && $all === false) continue;
                 echo trim($item->engl), "\r\n", "\r\n", "\r\n";
             }
-            else echo trim($item->ru), "\r\n", "\r\n", "\r\n";
+            else {
+                if ($item->sound->ru && $all === false) continue;
+                echo trim($item->ru), "\r\n", "\r\n", "\r\n";
+            }
         }
     }
 
