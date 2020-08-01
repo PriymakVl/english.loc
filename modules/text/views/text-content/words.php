@@ -6,7 +6,8 @@ use app\models\{Word, WordText};
 use app\models\Sound;
 use app\helpers\BreadcrumbsHelper;
 
-$this->registerJsFile('@web/js/sort_state.js', ['depends' => 'yii\web\YiiAsset']);
+// $this->registerJsFile('@web/js/sort_state.js', ['depends' => 'yii\web\YiiAsset']);
+$this->registerJsFile('@web/js/word/studied.js', ['depends' => 'yii\web\YiiAsset']);
 
 $this->title = 'Слова';
 
@@ -32,6 +33,7 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
         <?= Html::a('Озвучить', ['/word/lesson/sounds', 'text_id' => $text->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Повторять', ['/word/lesson/repeat', 'text_id' => $text->id], ['class' => 'btn btn-primary']) ?>
         <?= Html::a('Видео', ['/word/video', 'id' => $text->id], ['class' => 'btn btn-primary']) ?>
+        <button id="studied" class="btn btn-primary">Изучены</button>
     </p>
 
     <div class="nav-vertical">
@@ -59,6 +61,7 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
             <th>Engl</th>
             <th>Ru</th>
             <th>State</th>
+            <th>Select</th>
             <th>Sound</th>
           </tr>
         </thead>
@@ -73,6 +76,9 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
                         <td>
                             <? $css_class = $word->state->value ? 'green' : 'red'; ?>
                             <?= Html::a($word->state->valueStr, ['/word/set-state', 'id' => $word->id], ['class' => $css_class]) ?>
+                        </td>
+                        <td>
+                            <input type="checkbox" name="state" value="<?= $word->id ?>">
                         </td>
                         <td><?= $word->player('en'); ?></td>
                       </tr>

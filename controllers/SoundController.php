@@ -17,13 +17,21 @@ class SoundController extends \app\controllers\BaseController
         $this->giveFileToDownload($items, $lang, $all);
     }
 
+<<<<<<< HEAD
     private function giveFileToDownload($items, $lang, $all) 
+=======
+    private function giveFileToDownload($items, $lang) 
+>>>>>>> 7064f0b72bcdaee9d50498f2b471010b67a15af2
     {
         $this->setHeader();
         foreach ($items as $item) {
             if ($lang == 'en') {
                 if ($item->engl == 'con') continue; //не озвучивает программа
+<<<<<<< HEAD
                 if ($item->sound->en) continue;
+=======
+                if ($item->sound->en ) continue;
+>>>>>>> 7064f0b72bcdaee9d50498f2b471010b67a15af2
                 echo trim($item->engl), "\r\n", "\r\n", "\r\n";
             }
             else {
