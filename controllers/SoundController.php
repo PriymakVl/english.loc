@@ -9,30 +9,29 @@ use app\modules\word\models\Word;
 
 class SoundController extends \app\controllers\BaseController
 {
-    public function actionCreateFileStrings($lang, $text_id = false)
+    public function actionCreateFileStrings($lang, $text_id = false, $all = false)
     {
         if ($text_id)  $items = Phrase::findAll(['text_id' => $text_id, 'status' => STATUS_ACTIVE]);
         else $items = Word::findAll(['status' => STATUS_ACTIVE]);
         if (!$items) return $this->setMessage('Нет элементов', 'error')->back();
-        $this->giveFileToDownload($items, $lang);
+        $this->giveFileToDownload($items, $lang, $all);
     }
 
-    private function giveFileToDownload($items, $lang, $all = false) 
+    private function giveFileToDownload($items, $lang, $all) 
     {
-        if (!$items) exit('нет ничего для озвучки');
         $this->setHeader();
-         
         foreach ($items as $item) {
             if ($lang == 'en') {
                 if ($item->engl == 'con') continue; //не озвучивает программа
-                if ($item->sound->en && $all === false) continue;
+                if ($item->sound->en) continue;
                 echo trim($item->engl), "\r\n", "\r\n", "\r\n";
             }
             else {
-                if ($item->sound->ru && $all === false) continue;
+                if ($item->sound->ru) continue;
                 echo trim($item->ru), "\r\n", "\r\n", "\r\n";
             }
         }
+		exit();
     }
 
     private function setHeader()
