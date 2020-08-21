@@ -9,23 +9,29 @@ use app\modules\word\models\Word;
 
 class SoundController extends \app\controllers\BaseController
 {
-    public function actionCreateFileStrings($lang, $text_id = false)
+    public function actionCreateFileStrings($lang, $text_id = false, $all = false)
     {
         if ($text_id)  $items = Phrase::findAll(['text_id' => $text_id, 'status' => STATUS_ACTIVE]);
         else $items = Word::findAll(['status' => STATUS_ACTIVE]);
         if (!$items) return $this->setMessage('Нет элементов', 'error')->back();
-        $this->giveFileToDownload($items, $lang);
+        $this->giveFileToDownload($items, $lang, $all);
     }
 
+<<<<<<< HEAD
+    private function giveFileToDownload($items, $lang, $all) 
+=======
     private function giveFileToDownload($items, $lang) 
+>>>>>>> 7064f0b72bcdaee9d50498f2b471010b67a15af2
     {
-        if (!$items) exit('нет ничего для озвучки');
         $this->setHeader();
-         
         foreach ($items as $item) {
             if ($lang == 'en') {
                 if ($item->engl == 'con') continue; //не озвучивает программа
+<<<<<<< HEAD
+                if ($item->sound->en) continue;
+=======
                 if ($item->sound->en ) continue;
+>>>>>>> 7064f0b72bcdaee9d50498f2b471010b67a15af2
                 echo trim($item->engl), "\r\n", "\r\n", "\r\n";
             }
             else {
@@ -33,6 +39,7 @@ class SoundController extends \app\controllers\BaseController
                 echo trim($item->ru), "\r\n", "\r\n", "\r\n";
             }
         }
+		exit();
     }
 
     private function setHeader()

@@ -3,8 +3,8 @@
 	use yii\helpers\Html;
   use app\helpers\BreadcrumbsHelper;
 
-	$this->registerJsFile('@web/js/repeat_cards.js', ['depends' => 'yii\web\YiiAsset']);
-  $this->registerJsFile('@web/js/select_subtext.js', ['depends' => 'yii\web\YiiAsset']);
+	$this->registerJsFile('@web/js/phrase/repeat.js', ['depends' => 'yii\web\YiiAsset']);
+  // $this->registerJsFile('@web/js/select_subtext.js', ['depends' => 'yii\web\YiiAsset']);
 
 $this->title = 'Повторение фраз';
 
@@ -18,7 +18,7 @@ $this->registerCssFile('@web/css/phrase/repeat.css');
 
 <button id="turn_lang" class="btn btn-primary">Russion</button>
 
-<span>Количество фраз: <?= $text->stat->phrases->all ?></span>
+<span id="count_phrases">Количество фраз: <?= $text->stat->phrases->all ?></span>
 
 <div class="wrapper">
   <? if ($phrases): ?>
