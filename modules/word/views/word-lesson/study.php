@@ -61,9 +61,8 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
     <h2 title="<?= $word->ru ?>">
         <span onclick="translate_word.classList.toggle('hidden');"><?=$word->engl?></span>
         <span class="text-success hidden" id="translate_word"><?=$word->ru?></span>
-        <?= $word->makePlayer() ?>
+        <?= $word->player('en') ?>
     </h2>
-
     <h2 id="answer" class="hidden">Перевод: </h2>
 
     <? if ($word->phrases): ?>
@@ -72,7 +71,7 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
             <tr>
                 <th>#</th>
                 <th>Фразы</th>
-                <th>Озвучка</th>
+                <th>Озвучка английский</th>
             </tr>
             <? foreach ($word->phrases as $phrase): ?>
                 <tr style="font-size: 1.2em;cursor:pointer;">
@@ -82,7 +81,7 @@ $this->params['navigation'] = BreadcrumbsHelper::text($text->id);
                         <span><?= $phrase->engl ?></span>
                     </td>
                     <td>
-                        <?= $phrase->makePlayer() ?>
+                        <?= $phrase->player('en') ?>
                     </td>
                 </tr>
                 <? $num++; ?>
