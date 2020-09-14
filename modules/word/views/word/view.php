@@ -1,5 +1,4 @@
 <?php
-
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 use app\models\Sound;
@@ -29,6 +28,7 @@ function create_link_voice($model) {
     if (!$sound) return 'нет';
     return sprintf('<audio controls loop src="/sounds/%s"></audio>', $sound->filename);
 }
+
 ?>
 <div class="word-view">
 
@@ -55,8 +55,9 @@ function create_link_voice($model) {
                 'value' => function($model) {return create_link_state($model);}, 
             ],
 
-            ['attribute' => 'saund', 'format' => 'raw', 'value' => function($model) {return create_link_voice($model);}
-            ],
+            ['attribute' => 'sound_en', 'format' => 'raw', 'value' => function($model) {return $model->player('en');}],
+
+            ['attribute' => 'sound_ru', 'format' => 'raw', 'value' => function($model) {return $model->player('ru');}],
         ],
     ]) ?>
 
