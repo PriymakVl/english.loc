@@ -111,6 +111,18 @@ class TextController extends \app\controllers\BaseController
         throw new NotFoundHttpException('The method does not exist.');
     }
 
+    public function actionVideo($id)
+    {
+        $model = $this->findModel($id);
+        if (Yii::$app->request->isGet) return $this->render('video', ['model' => $model]);
+        $model->load(Yii::$app->request->post());
+        $model->video = UploadedFile::getInstance($model, 'video');
+        if ($model->save()) {
+            $this->setMessage('Видео добавлено');
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
+    }
+
     /**
      * Finds the Text model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
